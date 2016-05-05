@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12EB66D31CDAD774002CD3E4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EB66D21CDAD774002CD3E4 /* Reachability.m */; };
 		12F3488A1CD976CC0021B506 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F348891CD976CC0021B506 /* AppDelegate.swift */; };
 		12F3488C1CD976CC0021B506 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F3488B1CD976CC0021B506 /* ViewController.swift */; };
 		12F3488F1CD976CC0021B506 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12F3488D1CD976CC0021B506 /* Main.storyboard */; };
@@ -37,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12EB66D01CDAD771002CD3E4 /* MusicApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		12EB66D11CDAD774002CD3E4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		12EB66D21CDAD774002CD3E4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		12F348861CD976CC0021B506 /* MusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F348891CD976CC0021B506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12F3488B1CD976CC0021B506 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12EB66CF1CDAD743002CD3E4 /* Obj C */ = {
+			isa = PBXGroup;
+			children = (
+				12EB66D11CDAD774002CD3E4 /* Reachability.h */,
+				12EB66D21CDAD774002CD3E4 /* Reachability.m */,
+				12EB66D01CDAD771002CD3E4 /* MusicApp-Bridging-Header.h */,
+			);
+			name = "Obj C";
+			sourceTree = "<group>";
+		};
 		12F3487D1CD976CC0021B506 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +117,7 @@
 		12F348881CD976CC0021B506 /* MusicApp */ = {
 			isa = PBXGroup;
 			children = (
+				12EB66CF1CDAD743002CD3E4 /* Obj C */,
 				12F348BD1CD991580021B506 /* Utils */,
 				12F348BA1CD9789D0021B506 /* Helper */,
 				12F348B81CD9784E0021B506 /* Model */,
@@ -309,6 +324,7 @@
 				12F3488C1CD976CC0021B506 /* ViewController.swift in Sources */,
 				12F348C11CD993050021B506 /* MusicVideo.swift in Sources */,
 				12F3488A1CD976CC0021B506 /* AppDelegate.swift in Sources */,
+				12EB66D31CDAD774002CD3E4 /* Reachability.m in Sources */,
 				12F348BF1CD991790021B506 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,10 +469,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MusicApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = student.MusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicApp/MusicApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -464,10 +483,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MusicApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = student.MusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicApp/MusicApp-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -536,6 +557,7 @@
 				12F348B01CD976CC0021B506 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		12F348B11CD976CC0021B506 /* Build configuration list for PBXNativeTarget "MusicAppTests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +566,7 @@
 				12F348B31CD976CC0021B506 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		12F348B41CD976CC0021B506 /* Build configuration list for PBXNativeTarget "MusicAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +575,7 @@
 				12F348B61CD976CC0021B506 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
