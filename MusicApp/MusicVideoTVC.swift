@@ -22,9 +22,16 @@ class MusicVideoTVC: UITableViewController {
       
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reachabilityStatusChanged), name: "ReachStatusChanged", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(preferredFontChange), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        
+        
         reachabilityStatusChanged()
         
-        runApi()
+        
+    }
+    
+    func preferredFontChange()  {
+        print("font has changed")
     }
     
     func didLoadData(videos: [Videos]){
@@ -45,7 +52,7 @@ class MusicVideoTVC: UITableViewController {
         
         switch reachabilityStatus {
         case NOACCESS:
-            view.backgroundColor = UIColor.redColor()
+            //view.backgroundColor = UIColor.redColor()
             
             dispatch_async(dispatch_get_main_queue()) {
             let alert = UIAlertController(title: "No Internet Access", message: "Please make sure you are connected to the Internet", preferredStyle: .Alert)
@@ -74,7 +81,7 @@ class MusicVideoTVC: UITableViewController {
             
             break
         default:
-            view.backgroundColor = UIColor.greenColor()
+           // view.backgroundColor = UIColor.greenColor()
             if videos.count > 0 {
                 
             } else {
@@ -89,6 +96,11 @@ class MusicVideoTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    private struct storyboard {
+        static let cellReuseIdentifier = "cell"
+        static let segueIndentifier = "musicDetail"
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -103,14 +115,11 @@ class MusicVideoTVC: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(storyboard.cellReuseIdentifier, forIndexPath: indexPath) as! MusicVideoTableViewCell
 
         // Configure the cell...
-        let video = videos[indexPath.row]
+        cell.video = videos[indexPath.row]
         
-        cell.textLabel?.text = ("\(indexPath.row + 1 )")
-        
-        cell.detailTextLabel?.text = video.vName
 
         return cell
     }
@@ -123,6 +132,8 @@ class MusicVideoTVC: UITableViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
     /*
     // Override to support conditional editing of the table view.
@@ -168,5 +179,15 @@ class MusicVideoTVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == storyboard.segueIndentifier {
+            if let indexpath = tableView.indexPathForSelectedRow {
+                let video = videos[indexpath.row]
+                let dvc = segue.destinationViewController as! MusicVideoDetailVC
+                dvc.videos = video
+            }
+        }
+    }
 
 }

@@ -20,6 +20,7 @@ class Videos {
     private var _vGenre:String
     private var _vLinkToiTunes:String
     private var _vReleaseDte:String
+     var _vRank = 0
     
     var vImageData:NSData?
     
@@ -62,6 +63,8 @@ class Videos {
     var vReleaseDte: String {
         return _vReleaseDte
     }
+    
+    
     
     init(data: JSONDictionary) {
         
@@ -130,6 +133,8 @@ class Videos {
         } else {
             self._vReleaseDte = ""
         }
+        
+        
     }
     
     
